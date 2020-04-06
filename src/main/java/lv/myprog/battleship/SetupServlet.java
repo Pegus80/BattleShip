@@ -49,6 +49,7 @@ public class SetupServlet extends HttpServlet {
 
 
         if (opponentPlayer == null) {
+
             response.sendRedirect("/start");
         } else if (!player.getOwnField().isValid()) {
             request.getRequestDispatcher("/WEB-INF/setupShips.jsp").include(request, response);
