@@ -37,7 +37,6 @@ public class SetupServlet extends HttpServlet {
             request.setAttribute("message", "wrong placement!");
             request.getRequestDispatcher("/WEB-INF/setupShips.jsp").include(request, response);
         }
-
     }
 
     @Override
