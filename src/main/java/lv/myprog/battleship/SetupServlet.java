@@ -44,31 +44,23 @@ public class SetupServlet extends HttpServlet {
         // TODO insert logic to check state, whether everything is ready to setup ships.
 
         var player = (Player) request.getSession().getAttribute("player");
-
-        if (player == null) {
-            response.sendRedirect("/index.html");
-            return;
-
-        };
+        var game = (Game) request.getSession().getAttribute("game");
+        var opponentPlayer = game.getOpponent(player);
 
 
+        if (opponentPlayer == null) {
+            response.sendRedirect("/start");
+        } else if (!player.getOwnField().isValid()) {
+            request.getRequestDispatcher("/WEB-INF/setupShips.jsp").include(request, response);
 
-        if (player.getOwnField().isValid()) {
-            var opponentPlayer = ((Game) request.getSession().getAttribute("game")).getOpponent(player);
-
-            if (opponentPlayer != null) {
-                if (opponentPlayer.getOwnField().isValid()) {
-                    response.sendRedirect("/game");
-                } else {
-                    request.getRequestDispatcher("/WEB-INF/waitOpponentShips.jsp").include(request, response);
-                }
-            }
+        } else if (opponentPlayer.getOwnField().isValid()) {
+            response.sendRedirect("/game");
 
         } else {
-            request.getRequestDispatcher("/WEB-INF/setupShips.jsp").include(request, response);
+            request.getRequestDispatcher("/WEB-INF/waitOpponentShips.jsp").include(request, response);
+
         }
 
 
     }
-
 }
