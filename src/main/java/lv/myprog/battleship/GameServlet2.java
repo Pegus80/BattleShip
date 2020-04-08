@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "GameServlet", urlPatterns = "/game")
-public class GameServlet extends HttpServlet {
+@WebServlet(name = "GameServlet2", urlPatterns = "/game2")
+public class GameServlet2 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var addr = request.getParameter("cell");

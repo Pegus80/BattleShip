@@ -17,20 +17,19 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//        var name = request.getParameter("name");
-//        var player = new Player();
-//        player.setName(name);
-//
-//        var gameMgr = (GameManager) request.getServletContext().getAttribute("gameManager");
-//        var game = gameMgr.getIncompleteGameAndJoin(player);
-//
-//        request.getSession().setAttribute("player", player);
-//        request.getSession().setAttribute("game", game);
-//
-//        request.getRequestDispatcher("/WEB-INF/waitOpponentLogin.jsp")
-//                .include(request, response);
+        var name = request.getParameter("name");
+        var player = new Player();
+        player.setName(name);
 
-        response.sendRedirect("/game");
+        var gameMgr = (GameManager) request.getServletContext().getAttribute("gameManager");
+        var game = gameMgr.getIncompleteGameAndJoin(player);
+
+        request.getSession().setAttribute("player", player);
+        request.getSession().setAttribute("game", game);
+
+        request.getRequestDispatcher("/WEB-INF/waitOpponentLogin.jsp")
+                .include(request, response);
+
     }
 
     @Override
