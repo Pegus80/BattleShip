@@ -1,7 +1,5 @@
 package lv.myprog.battleship;
 
-
-
 import lv.myprog.battleship.model.CellState;
 import lv.myprog.battleship.model.Game;
 import lv.myprog.battleship.model.Player;
@@ -32,36 +30,25 @@ public class SetupServlet extends HttpServlet {
         }
 
         if (player.getOwnField().isValid()) {
-            request.getRequestDispatcher("/WEB-INF/waitOpponentShips.jsp").include(request, response);
+            doGet(request, response);
         } else {
             request.setAttribute("message", "wrong placement!");
             request.getRequestDispatcher("/WEB-INF/setupShips.jsp").include(request, response);
         }
+
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO insert logic to check state, whether everything is ready to setup ships.
-
         var player = (Player) request.getSession().getAttribute("player");
         var game = (Game) request.getSession().getAttribute("game");
-        var opponentPlayer = game.getOpponent(player);
-
-
-        if (opponentPlayer == null) {
-
-            response.sendRedirect("/start");
-        } else if (!player.getOwnField().isValid()) {
+        if (!player.getOwnField().isValid()) {
             request.getRequestDispatcher("/WEB-INF/setupShips.jsp").include(request, response);
-
-        } else if (opponentPlayer.getOwnField().isValid()) {
+        } else if (game.getPlayer1().isReadyToPlay() && game.getPlayer2().isReadyToPlay()) {
             response.sendRedirect("/game");
-
         } else {
-            request.getRequestDispatcher("/WEB-INF/waitOpponentShips.jsp").include(request, response);
-
+            request.getRequestDispatcher("/WEB-INF/waitSetup.jsp").include(request, response);
         }
-
-
     }
+
 }

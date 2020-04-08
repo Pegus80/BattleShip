@@ -1,6 +1,5 @@
 package lv.myprog.battleship.model;
 
-import javax.swing.plaf.BorderUIResource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,13 +19,12 @@ public class Field {
     }
 
     public boolean isValid() {
-        return cells.values().stream().filter(s -> s == CellState.SHIP).count() == 20;
+        return cells.values().stream()
+                .filter(s -> s == CellState.SHIP)
+                .count() > 0 ;
     }
 
-
-    public boolean isShipPositionValid() {
-        return true;
+    public boolean hasShips() {
+        return cells.containsValue(CellState.SHIP);
     }
-
-
 }
