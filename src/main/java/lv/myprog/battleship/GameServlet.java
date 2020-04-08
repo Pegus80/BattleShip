@@ -16,6 +16,7 @@ import java.io.IOException;
 public class GameServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         var addr = request.getParameter("cell");
         if (addr == null) {
             request.setAttribute("message", "you forgot to select a cell");
@@ -30,6 +31,9 @@ public class GameServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+
         var player = (Player) request.getSession().getAttribute("player");
         var game = (Game) request.getSession().getAttribute("game");
         if(game.isFinished()) {
