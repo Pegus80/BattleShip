@@ -47,8 +47,8 @@ public class SetupServlet extends HttpServlet {
         } else if (game.getPlayer1().isReadyToPlay() && game.getPlayer2().isReadyToPlay()) {
 
             // TODO Error with servlet game2 and no error with servlet game
-           // response.sendRedirect("/game");
-            response.sendRedirect("/game2");
+            response.sendRedirect("/game");
+          //  response.sendRedirect("/game2");
 
         } else {
             request.getRequestDispatcher("/WEB-INF/waitSetup.jsp").include(request, response);

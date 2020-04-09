@@ -44,6 +44,20 @@ public class Game {
         }
     }
 
+    public void clearGame (){
+       winner=null;
+       loser=null;
+       player1.getOwnField().clear();
+       player2.getOwnField().clear();
+       player1.clearHistory();
+       player2.clearHistory();
+       player1.clearFields();
+       player2.clearFields();
+       isPlayer1Turn=!isPlayer1Turn; //will start another player
+
+    }
+
+
     public synchronized boolean isMyTurn(Player  player) {
         return getActivePlayer() == player;
     }

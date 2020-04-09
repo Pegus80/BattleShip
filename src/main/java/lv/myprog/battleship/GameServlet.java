@@ -31,6 +31,7 @@ public class GameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var player = (Player) request.getSession().getAttribute("player");
+
         var game = (Game) request.getSession().getAttribute("game");
         if(game.isFinished()) {
             response.sendRedirect("/finish");

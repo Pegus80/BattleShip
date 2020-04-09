@@ -36,4 +36,13 @@ public class Player {
     public List<String> getHistory() {
         return history;
     }
+
+    public void clearHistory() {
+        history.clear();
+    }
+
+    public void clearFields() {
+        ownField.clear();
+        enemyField.clear();
+    }
 }
