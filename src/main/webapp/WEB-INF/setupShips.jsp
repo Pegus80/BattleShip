@@ -40,6 +40,7 @@
         <h2>${requestScope.message}</h2>
     </c:if>
     <button type="submit">Start</button>
+    <button type="submit" name="btn" value="cancel">Cancel</button>
 </form>
 
 </body>

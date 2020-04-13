@@ -53,6 +53,7 @@
 <c:forEach var="h" items="${sessionScope.player.history}">
     <p>${h}</p>
 </c:forEach>
+<button type="submit" name="btn" value="cancel">Cancel</button>
 
 
 </body>

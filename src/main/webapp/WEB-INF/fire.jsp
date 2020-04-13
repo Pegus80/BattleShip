@@ -54,6 +54,7 @@
         <h2>${requestScope.message}</h2>
     </c:if>
     <button type="submit">Fire</button>
+    <button type="submit" name="btn" value="cancel">Cancel</button>
 </form>
 
 <c:forEach var="h" items="${sessionScope.player.history}">

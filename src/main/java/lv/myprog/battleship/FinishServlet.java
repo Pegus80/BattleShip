@@ -32,7 +32,7 @@ public class FinishServlet extends HttpServlet {
             game = gameMgr.getIncompleteGameAndJoin(player);
             request.getSession().setAttribute("game", game);
 
-            request.getRequestDispatcher("/WEB-INF/waitOpponentLogin.jsp").include(request, response);
+          //  request.getRequestDispatcher("/WEB-INF/waitOpponentLogin.jsp").include(request, response);
             response.sendRedirect("/start");
         }
 
